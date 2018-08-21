@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="passoasApp">
+    <head>
+        <title>CRUD Seleção</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ng-controller="PessoasController">
+        <h1>Cadastro de Pessoas</h1>
+        <form>
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" id="nome" />
+            <br>
+            <label for="cpf">CPF: </label>
+            <input type="text" name="cpf" id="cpf" />
+            <br>
+            <label for="nome">Email: </label>
+            <input type="email" name="email" id="email" />
+            <br>
+            <label for="telefone">Telefone: </label>
+            <input type="text" name="telefone" id="telefone" />
+            <br>
+            <button>Salvar</button>
+        </form>
+        
+        <h1>Listagem de Pessoas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Parte responsável por realizar a interação das pessoas cadastradas-->
+                <tr ng-repeat="pessoa in pessoas track by $index" >
+                    <td>{{pessoa.id}}</td>
+                    <td>{{pessoa.nome}}</td>
+                    <td>{{pessoa.cpf}}</td>
+                    <td>{{pessoa.email}}</td>
+                    <td>{{pessoa.telefone}}</td>
+                </tr>
+            </tbody>
+        </table>
+            <script src="js/angular.min.js"></script>
+            <script>
+                var appPessoa = angular.module(pessoasApp, []);
+                
+                appPessoa.controller('PessoasController', function($scope){
+                    var pessoas = [{
+                            id: 1,
+                            nome: 'Francisco Alex Pinto',
+                            cpf: '012.692.153-96',
+                            email: 'alexfapa32@gmail.com',
+                            telefone: '(88)99777-6277'
+                    },{
+                            id: 2,
+                            nome: 'André Pinto',
+                            cpf: '012.692.153-99',
+                            email: 'alvesandre@gmail.com',
+                            telefone: '(88)99788-6277'
+                    },{
+                            id: 3,
+                            nome: 'Rodolfo Pinto',
+                            cpf: '012.692.153-77',
+                            email: 'alvesrodolfo@gmail.com',
+                            telefone: '(88)99398-6277'
+                    }];
+                $scope.pessoas = pessoas;
+                });
+            </script>        
+    </body>
+</html>
